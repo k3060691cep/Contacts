@@ -4,6 +4,7 @@ import styled from "styled-components";
 import {getData} from "./services/network";
 
 const Wrapper = styled.div`
+box-sizing: border-box;
   margin: 16px 180px;
 `
 const Header = styled.header`
@@ -20,6 +21,7 @@ const Button = styled.button`
 function App() {
     const [contacts, setContacts] = useState(null)
     const [viewTable, setViewTable] = useState(true)
+    const [sortContacts, setSortContacts] = useState(true)
 
 
 
@@ -43,8 +45,15 @@ function App() {
 
 
     const sort = () => {
-        let newContacts = contacts.sort((a, b) => a.name.first.localeCompare(b.name.first))
-        setContacts(newContacts)
+        if (sortContacts){
+            setContacts([...contacts].sort((a, b) => a.name.first.localeCompare(b.name.first)))
+            setSortContacts(false)
+        } else if (sortContacts === false){
+            setContacts([...contacts].sort((a, b) => b.name.first.localeCompare(a.name.first)))
+            setSortContacts(true)
+        }
+
+
     }
 
   return (
