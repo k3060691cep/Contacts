@@ -59,7 +59,6 @@ function App() {
             <Content>
                 {viewTable ? <Table contacts={contacts} sort={sort}/> : <Bar contacts={contacts}/>}
             </Content>
-
         </Wrapper>
     );
 }

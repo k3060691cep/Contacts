@@ -4,9 +4,9 @@ import styled from 'styled-components'
 const TableStyled = styled.table`
   margin-top: 16px;
   width: 1600px;
-  -webkit-box-shadow: 0px 0px 4px 1px rgba(34, 60, 80, 0.2);
-  -moz-box-shadow: 0px 0px 4px 1px rgba(34, 60, 80, 0.2);
-  box-shadow: 0px 0px 4px 1px rgba(34, 60, 80, 0.2);
+  -webkit-box-shadow: 2px 2px 12px -4px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 2px 2px 12px -4px rgba(34, 60, 80, 0.2);
+  box-shadow: 2px 2px 12px -4px rgba(34, 60, 80, 0.2);
   padding: 16px 16px;
 `
 const Header = styled.tr`
@@ -33,7 +33,7 @@ export const Table = ({contacts, sort}) => {
         <TableStyled>
             <Header>
                 <td>Avatar</td>
-                <td onClick={sortByName}>Fullname</td>
+                <td onClick={sortByName}>Full name</td>
                 <td>Birthday</td>
                 <td>Email</td>
                 <td>Phone</td>
