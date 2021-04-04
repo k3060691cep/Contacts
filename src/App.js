@@ -23,52 +23,45 @@ function App() {
     const [viewTable, setViewTable] = useState(true)
     const [sortContacts, setSortContacts] = useState(true)
 
-
-
     useEffect(() => {
-       getData('https://randomuser.me/api/?results=10')
-           .then(({results}) => setContacts(results))
-     }, [])
+        getData('https://randomuser.me/api/?results=10')
+            .then(({results}) => setContacts(results))
+    }, [])
 
-    const handleChangeTable = () =>{
+    const handleChangeTable = () => {
         setViewTable(true)
     }
-    const handleChangeBar = () =>{
+    const handleChangeBar = () => {
         setViewTable(false)
     }
     const getNewPersons = () => {
-            getData('https://randomuser.me/api/?results=10')
-                .then(({results}) => setContacts(results))
-
-
+        getData('https://randomuser.me/api/?results=10')
+            .then(({results}) => setContacts(results))
     }
 
-
     const sort = () => {
-        if (sortContacts){
+        if (sortContacts) {
             setContacts([...contacts].sort((a, b) => a.name.first.localeCompare(b.name.first)))
             setSortContacts(false)
-        } else if (sortContacts === false){
+        } else if (sortContacts === false) {
             setContacts([...contacts].sort((a, b) => b.name.first.localeCompare(a.name.first)))
             setSortContacts(true)
         }
-
-
     }
 
-  return (
-    <Wrapper className="App">
-        <Header>
-            <Button onClick={getNewPersons}>getPerson</Button>
-            <Button onClick={handleChangeTable}>Table</Button>
-            <Button onClick={handleChangeBar}>Bar</Button>
-        </Header>
-        <Content>
-            {viewTable ? <Table contacts={contacts} sort={sort}/> : <Bar contacts={contacts} />}
-        </Content>
+    return (
+        <Wrapper className="App">
+            <Header>
+                <Button onClick={getNewPersons}>getPerson</Button>
+                <Button onClick={handleChangeTable}>Table</Button>
+                <Button onClick={handleChangeBar}>Bar</Button>
+            </Header>
+            <Content>
+                {viewTable ? <Table contacts={contacts} sort={sort}/> : <Bar contacts={contacts}/>}
+            </Content>
 
-    </Wrapper>
-  );
+        </Wrapper>
+    );
 }
 
 export default App;

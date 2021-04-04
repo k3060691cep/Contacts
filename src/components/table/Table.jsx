@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react'
-import styled from  'styled-components'
+import styled from 'styled-components'
 
 const TableStyled = styled.table`
   margin-top: 16px;
@@ -15,8 +15,7 @@ const Header = styled.tr`
     border: none;
     cursor: pointer;
 `
-const Wrapper =styled.div`
-
+const Wrapper = styled.div`
     
 `
 const Row = styled.tr`
@@ -27,28 +26,22 @@ const Avatar = styled.img`
 `
 
 
-
 export const Table = ({contacts, sort}) => {
+    const sortByName = () => sort()
 
-        const sortByName = () => {
-            sort()
-        }
-
-
-    console.log(contacts)
     return (
         <TableStyled>
             <Header>
                 <td>Avatar</td>
                 <td onClick={sortByName}>Fullname</td>
-                <td>Birthday </td>
-                <td>Email </td>
-                <td>Phone </td>
-                <td>Location </td>
+                <td>Birthday</td>
+                <td>Email</td>
+                <td>Phone</td>
+                <td>Location</td>
                 <td>Nationality</td>
             </Header>
-                {contacts && contacts.map((item) =>
-                    <Row key={item.login.md5}>
+            {contacts && contacts.map((item) =>
+                <Row key={item.login.md5}>
                     <td><Avatar src={item.picture.thumbnail} alt={item.name.first}/></td>
                     <td>{`${item.name.title}  ${item.name.first} ${item.name.last}`}</td>
                     <td>{item.dob.date} </td>
@@ -57,9 +50,9 @@ export const Table = ({contacts, sort}) => {
                     <td>{`/ ${item.location.country}/ ${item.location.street.number} ${item.location.street.name},
                     ${item.location.state}, ${item.location.postcode}`} </td>
                     <td>{item.location.country}</td>
-                    </Row>
-                )
-                }
+                </Row>
+            )
+            }
         </TableStyled>
     )
 }
